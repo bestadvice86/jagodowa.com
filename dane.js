@@ -6,7 +6,7 @@
    ================================================================================= */
 const DRAFT = true;
 const STAN_NA = "2026-10-28";          // data publikacji / ostatniej zmiany (RRRR-MM-DD)
-const PROSPEKT_PDF = "";               // np. "prospekt-lubiatowska-89-czesc-ogolna.pdf"
+const PROSPEKT_PDF = "prospekt-lubiatowska-89-czesc-ogolna.pdf";
 const LOKALE = [
   { nr: "89/1", pu: 134.84, cena: null, status: "dostępny" },   // pow. wg projektu, jak lokal 91/1 (w tym garaż 18,77 m²)
   { nr: "89/2", pu: 133.18, cena: null, status: "dostępny" },   // pow. wg projektu, jak lokal 91/2 (w tym garaż 18,77 m²)

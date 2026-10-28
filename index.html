@@ -247,7 +247,7 @@ html{scroll-behavior:smooth}
   </div>
 </footer>
 
-<script src="dane.js"></script>
+<script>document.write('<script src="dane.js?v='+Math.floor(Date.now()/3600000)+'"><\/script>')</script>
 <script>
 const fmtPLN = n => n.toLocaleString("pl-PL",{minimumFractionDigits:2,maximumFractionDigits:2}) + " zł";
 const fmtM2  = n => n.toLocaleString("pl-PL",{minimumFractionDigits:2,maximumFractionDigits:2}) + " m²";

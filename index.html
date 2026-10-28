@@ -1,0 +1,242 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Jagodowa Polana – lokale mieszkalne 89/1 i 89/2 przy ul. Lubiatowskiej 89 w Koszalinie. Cennik i informacje zgodnie z art. 19a ustawy deweloperskiej.">
+<title>Jagodowa Polana Lubiatowska 89</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600&family=Public+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap">
+<style>
+/* Layout: one column, ~720px measure, sections separated by rules; price table and history are the centre of gravity */
+:root{
+  --bg:#f5f7f3; --surface:#ffffff; --fg:#1d2823; --muted:#5d6a63; --line:#d6ddd6;
+  --accent:#4b3f8c; --accent-soft:#e9e6f6; --warn-bg:#fff4cc; --warn-fg:#6b4d00; --warn-line:#e6c75a;
+  --font-display:"Outfit",system-ui,sans-serif; --font-body:"Public Sans",system-ui,sans-serif;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --bg:#141b17; --surface:#1c2520; --fg:#e7ece7; --muted:#9aa69f; --line:#33403a;
+  --accent:#b2a6f2; --accent-soft:#2b2847; --warn-bg:#3a3010; --warn-fg:#f1d77a; --warn-line:#7a6520; color-scheme:dark }}
+:root[data-theme="dark"]{
+  --bg:#141b17; --surface:#1c2520; --fg:#e7ece7; --muted:#9aa69f; --line:#33403a;
+  --accent:#b2a6f2; --accent-soft:#2b2847; --warn-bg:#3a3010; --warn-fg:#f1d77a; --warn-line:#7a6520; color-scheme:dark }
+
+body{background:var(--bg);color:var(--fg);font-family:var(--font-body);font-size:16px;line-height:1.55;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0 48px}
+.wrap{max-width:760px;margin:0 auto}
+h1,h2,h3{font-family:var(--font-display);font-weight:600;line-height:1.15;text-wrap:balance;margin:0}
+h1{font-size:clamp(28px,5vw,40px)}
+h2{font-size:22px;margin-bottom:14px}
+h3{font-size:17px;margin-bottom:6px}
+p{margin:0 0 12px;max-width:66ch}
+a{color:var(--accent)}
+.eyebrow{font-size:12px;letter-spacing:.09em;text-transform:uppercase;color:var(--muted);font-weight:600;margin-bottom:10px}
+header{padding-block:28px 22px;border-bottom:1px solid var(--line);display:flex;flex-wrap:wrap;gap:8px 24px;align-items:baseline;justify-content:space-between}
+.brand{font-family:var(--font-display);font-weight:600;font-size:18px}
+.brand small{display:block;font-family:var(--font-body);font-weight:400;font-size:13px;color:var(--muted)}
+.hero{padding-block:36px 28px}
+.hero .lead{font-size:18px;color:var(--fg);max-width:60ch}
+.facts{display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:16px;color:var(--muted);font-size:14px}
+.facts span b{color:var(--fg);font-weight:600}
+section{padding-block:28px;border-top:1px solid var(--line)}
+.draft{background:var(--warn-bg);color:var(--warn-fg);border:1px solid var(--warn-line);border-radius:6px;padding:12px 14px;margin:18px 0 0;font-size:14px}
+.draft b{font-weight:600}
+.stamp{font-size:14px;color:var(--muted);margin-bottom:12px}
+.tablewrap{overflow-x:auto;border:1px solid var(--line);border-radius:8px;background:var(--surface)}
+table{border-collapse:collapse;width:100%;min-width:560px;font-size:15px;font-variant-numeric:tabular-nums}
+th,td{padding:11px 12px;text-align:left;vertical-align:top;border-bottom:1px solid var(--line)}
+tr:last-child td{border-bottom:0}
+th{font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);font-weight:600;background:var(--accent-soft)}
+td.num,th.num{text-align:right;white-space:nowrap}
+td.price{font-family:var(--font-display);font-weight:600;font-size:17px}
+.pill{display:inline-block;font-size:12px;font-weight:600;letter-spacing:.04em;padding:2px 8px;border-radius:999px;background:var(--accent-soft);color:var(--accent)}
+.todo{color:var(--warn-fg);background:var(--warn-bg);border:1px dashed var(--warn-line);padding:1px 6px;border-radius:4px;font-size:13px;white-space:nowrap}
+.note{font-size:14px;color:var(--muted);margin-top:12px}
+.note p{margin-bottom:6px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px 32px}
+.grid>div{min-width:0}
+ul{margin:0 0 12px;padding-left:20px}
+li{margin-bottom:4px}
+dl{display:grid;grid-template-columns:max-content 1fr;gap:6px 16px;margin:0;font-size:15px}
+dt{color:var(--muted)}
+dd{margin:0;min-width:0}
+.contact{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px 28px}
+.contact .big{font-family:var(--font-display);font-size:20px;font-weight:600;user-select:all}
+footer{padding-block:24px 0;border-top:1px solid var(--line);font-size:13px;color:var(--muted)}
+@media (max-width:520px){ dl{grid-template-columns:1fr} dt{margin-top:6px} }
+@media (prefers-reduced-motion:reduce){ *{scroll-behavior:auto} }
+</style>
+
+<style>body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <div class="brand">Jagodowa Polana<small>Jagodowa Invest sp. z o.o. · Koszalin</small></div>
+  <div style="font-size:14px;color:var(--muted)">ul. Lubiatowska 89, Koszalin (Lubiatowo)</div>
+</header>
+
+<div class="hero">
+  <div class="eyebrow">Domy w zabudowie bliźniaczej · budynek A</div>
+  <h1>Dwa lokale mieszkalne przy ul. Lubiatowskiej 89 w Koszalinie</h1>
+  <p class="lead" style="margin-top:14px">Budynek mieszkalny jednorodzinny dwulokalowy na osiedlu Lubiatowo, przy lesie i rezerwacie Jeziora Lubiatowskiego. Każdy lokal jest dwukondygnacyjny, z garażem wbudowanym, tarasem, balkonem i własną częścią ogrodu.</p>
+  <div class="facts">
+    <span>Lokale: <b>89/1 i 89/2</b></span>
+    <span>Działka: <b>nr 192/15, obręb 0042</b></span>
+    <span>Stan: <b>końcowa faza realizacji</b></span>
+    <span>Stan wykończenia: <b>deweloperski</b></span>
+  </div>
+  <div class="draft" id="draftBanner" hidden></div>
+</div>
+
+<section id="cennik">
+  <div class="eyebrow">Informacja o cenach · art. 19a ustawy deweloperskiej</div>
+  <h2>Cennik lokali</h2>
+  <div class="stamp" id="stamp"></div>
+  <div class="tablewrap">
+    <table id="priceTable">
+      <thead><tr>
+        <th>Lokal</th>
+        <th class="num">Pow. użytkowa</th>
+        <th class="num">Cena lokalu brutto</th>
+        <th class="num">Cena 1 m² brutto</th>
+        <th>Pomieszczenia przynależne i prawa</th>
+        <th>Inne świadczenia na rzecz dewelopera</th>
+        <th>Status</th>
+      </tr></thead>
+      <tbody></tbody>
+    </table>
+  </div>
+  <div class="note">
+    <p>Ceny podane brutto, z podatkiem VAT 8%. Cena lokalu obejmuje udział w nieruchomości wspólnej (działka nr 192/15) oraz prawo do wyłącznego korzystania z części działki (podział quoad usum). Garaż jest częścią lokalu i jest objęty ceną. Deweloper nie pobiera innych świadczeń pieniężnych w wykonaniu umowy przenoszącej własność. Koszty aktu notarialnego i opłat sądowych ponosi nabywca na rzecz notariusza i sądu, nie dewelopera. Cena nie podlega waloryzacji.</p>
+    <p>Powierzchnia użytkowa mierzona wg PN-ISO 9836, w świetle ścian wykończonych, z wliczeniem garażu, bez tarasu i balkonu. Ostateczna powierzchnia wynika z inwentaryzacji powykonawczej i zaświadczenia o samodzielności lokalu.</p>
+  </div>
+</section>
+
+<section id="historia">
+  <h2>Historia zmian cen</h2>
+  <p style="color:var(--muted);font-size:14px">Każda zmiana ceny jest odnotowywana z datą; wcześniejsze wpisy pozostają widoczne.</p>
+  <div class="tablewrap">
+    <table id="historyTable">
+      <thead><tr><th>Data</th><th>Lokal</th><th class="num">Cena lokalu brutto</th><th class="num">Cena 1 m² brutto</th><th>Zdarzenie</th></tr></thead>
+      <tbody></tbody>
+    </table>
+  </div>
+</section>
+
+<section id="lokale">
+  <h2>Układ i standard lokali</h2>
+  <div class="grid">
+    <div>
+      <h3>Parter</h3>
+      <ul><li>salon z aneksem kuchennym i wyjściem na taras</li><li>korytarz i komunikacja</li><li>WC</li><li>pomieszczenie gospodarcze</li><li>garaż wbudowany z bramą segmentową</li></ul>
+      <h3>Piętro</h3>
+      <ul><li>sypialnia z garderobą i łazienką</li><li>dwa pokoje</li><li>druga łazienka</li><li>korytarz</li><li>balkon od strony ogrodu</li></ul>
+    </div>
+    <div>
+      <h3>Stan deweloperski</h3>
+      <ul><li>ściany i sufity otynkowane, wylewki cementowe (w garażu posadzka betonowa)</li><li>instalacja elektryczna do puszek, z wyposażoną rozdzielnicą</li><li>instalacja wod.-kan. z podejściami, bez białego montażu</li><li>instalacja gazowa z kotłem kondensacyjnym i c.o.; wentylacja grawitacyjna</li><li>okna PCV trzyszybowe z parapetami zewnętrznymi, drzwi zewnętrzne, balustrady aluminiowe</li></ul>
+      <h3>Technologia</h3>
+      <ul><li>ściany z bloczków keramzytowych, ocieplenie styropianem 18 cm</li><li>podwójna ściana akustyczna między lokalami, stropy Teriva</li><li>media: prąd, gaz ziemny, wodociąg; kanalizacja – zbiornik bezodpływowy odrębny dla lokalu do czasu budowy sieci</li><li>2 zewnętrzne miejsca postojowe na podjazdach</li></ul>
+    </div>
+  </div>
+</section>
+
+<section id="przedsiewziecie">
+  <div class="eyebrow">Dane z części ogólnej prospektu informacyjnego</div>
+  <h2>Przedsięwzięcie deweloperskie „Jagodowa Polana”</h2>
+  <dl>
+    <dt>Deweloper</dt><dd>JAGODOWA INVEST sp. z o.o. z siedzibą w Koszalinie, KRS 0000919433 (Sąd Rejonowy w Koszalinie, IX Wydział Gospodarczy KRS), NIP 6692563431, REGON 389653670, kapitał zakładowy 5 000 zł</dd>
+    <dt>Reprezentacja</dt><dd>Małgorzata Wieliczko – Prezes Zarządu, Bartłomiej Michalik – Członek Zarządu (reprezentacja łączna)</dd>
+    <dt>Przedsięwzięcie</dt><dd>budowa dwóch budynków mieszkalnych jednorodzinnych dwulokalowych przy ul. Lubiatowskiej 89 i 91 w Koszalinie (dz. 192/15 i 192/16, obręb 0042); budynek przy nr 91 ukończony, pozwolenie na użytkowanie z 3.06.2026 r.</dd>
+    <dt>Zadanie objęte ofertą</dt><dd>budynek A przy ul. Lubiatowskiej 89, działka nr 192/15, obręb 0042 Koszalin</dd>
+    <dt>Księga wieczysta</dt><dd>KO1K/00119440/7, Sąd Rejonowy w Koszalinie, VI Wydział Ksiąg Wieczystych; właściciel: Jagodowa Invest sp. z o.o.; dział IV bez wpisów</dd>
+    <dt>Pozwolenie na budowę</dt><dd>decyzja Prezydenta Miasta Koszalina nr 239/2020 z 3.08.2020 r. (A-I-9.6740.224.2020.RP), ostateczna, przeniesiona na dewelopera decyzją z 28.12.2021 r.</dd>
+    <dt>Plan miejscowy</dt><dd>MPZP „Rokosowo Południe – Dzierżęcino”, teren 161 MN – zabudowa mieszkaniowa jednorodzinna</dd>
+    <dt>Finansowanie</dt><dd>100% środki własne dewelopera; brak kredytu bankowego i hipoteki na nieruchomości</dd>
+    <dt>Dojazd</dt><dd>bezpośredni z drogi gminnej (dz. 192/12, ul. Lubiatowska)</dd>
+    <dt>Prospekt informacyjny</dt><dd id="prospektLink"></dd>
+  </dl>
+  <p class="note">Z aktualnym stanem księgi wieczystej, odpisem z KRS, pozwoleniem na budowę, sprawozdaniami finansowymi za ostatnie dwa lata i projektem budowlanym można zapoznać się w siedzibie dewelopera po umówieniu terminu.</p>
+</section>
+
+<section id="kontakt">
+  <h2>Kontakt i sprzedaż</h2>
+  <div class="contact">
+    <div><div class="eyebrow">Telefon</div><div class="big">694 947 352</div></div>
+    <div><div class="eyebrow">E-mail</div><div class="big">biuro@jagodowa.com</div></div>
+    <div><div class="eyebrow">Siedziba i miejsce sprzedaży</div><div>Jagodowa Invest sp. z o.o.<br>ul. Stanisława Moniuszki 20A<br>75-551 Koszalin<br><span style="color:var(--muted);font-size:14px">spotkania po wcześniejszym umówieniu</span></div></div>
+    <div><div class="eyebrow">Lokalizacja inwestycji</div><div>ul. Lubiatowska 89<br>75-900 Koszalin, osiedle Lubiatowo<br><span style="color:var(--muted);font-size:14px">przystanek 150 m, Orlik i plac zabaw 200 m</span></div></div>
+  </div>
+</section>
+
+<footer>
+  Informacje o cenach publikowane na podstawie art. 19a ustawy z dnia 20 maja 2021 r. o ochronie praw nabywcy lokalu mieszkalnego lub domu jednorodzinnego oraz Deweloperskim Funduszu Gwarancyjnym. Niniejsza strona nie stanowi oferty w rozumieniu art. 66 Kodeksu cywilnego. © Jagodowa Invest sp. z o.o. · <a href="https://www.facebook.com/jagodowakoszalin">Facebook: Jagodowa Polana</a>
+</footer>
+</div>
+
+<script>
+/* ====================== DANE DO UZUPEŁNIENIA ======================
+   Jedyne miejsce, które trzeba edytować. Ceny brutto w zł (z 8% VAT),
+   powierzchnia w m² wg projektu. Przy zmianie ceny: NIE nadpisuj wpisu w
+   HISTORIA – dopisz nowy wiersz z datą zmiany i zmień "cena" w LOKALE.
+   Ustaw DRAFT = false przed wgraniem na jagodowa.com.                */
+const DRAFT = true;
+const STAN_NA = "2026-10-28";          // data publikacji / ostatniej zmiany
+const PROSPEKT_PDF = "";               // np. "prospekt-lubiatowska-89-czesc-ogolna.pdf"
+const LOKALE = [
+  { nr: "89/1", pu: 134.84, cena: null, status: "dostępny" },   // pow. wg projektu, jak lokal 91/1 (w tym garaż 18,77 m²)
+  { nr: "89/2", pu: 133.18, cena: null, status: "dostępny" },   // pow. wg projektu, jak lokal 91/2 (w tym garaż 18,77 m²)
+];
+const HISTORIA = [
+  // { data: "2026-10-28", nr: "89/1", cena: 000000, zdarzenie: "rozpoczęcie sprzedaży" },
+  // { data: "2026-10-28", nr: "89/2", cena: 000000, zdarzenie: "rozpoczęcie sprzedaży" },
+];
+/* ================================================================== */
+
+const fmtPLN = n => n.toLocaleString("pl-PL",{minimumFractionDigits:2,maximumFractionDigits:2}) + " zł";
+const fmtM2  = n => n.toLocaleString("pl-PL",{minimumFractionDigits:2,maximumFractionDigits:2}) + " m²";
+const fmtDate= s => { const [y,m,d]=s.split("-"); return `${d}.${m}.${y}`; };
+const todo = t => `<span class="todo">${t}</span>`;
+const puOf = nr => (LOKALE.find(l=>l.nr===nr)||{}).pu;
+
+document.getElementById("stamp").textContent = "Stan na dzień " + fmtDate(STAN_NA) + ". Ceny ofertowe brutto.";
+
+const tb = document.querySelector("#priceTable tbody");
+tb.innerHTML = LOKALE.map(l => {
+  const pu   = l.pu   ? fmtM2(l.pu)   : todo("pow. do uzupełnienia");
+  const cena = l.cena ? fmtPLN(l.cena): todo("cena do uzupełnienia");
+  const m2   = (l.pu && l.cena) ? fmtPLN(l.cena/l.pu) : "—";
+  return `<tr>
+    <td><b>lokal nr ${l.nr}</b><br><span style="color:var(--muted);font-size:13px">ul. Lubiatowska 89</span></td>
+    <td class="num">${pu}</td>
+    <td class="num price">${cena}</td>
+    <td class="num">${m2}</td>
+    <td>garaż (część lokalu), udział w nieruchomości wspólnej, prawo do wyłącznego korzystania z części działki – w cenie</td>
+    <td>brak</td>
+    <td><span class="pill">${l.status}</span></td>
+  </tr>`;
+}).join("");
+
+const hb = document.querySelector("#historyTable tbody");
+hb.innerHTML = HISTORIA.length ? HISTORIA.map(h => {
+  const pu = puOf(h.nr);
+  return `<tr><td>${fmtDate(h.data)}</td><td>lokal nr ${h.nr}</td><td class="num">${fmtPLN(h.cena)}</td><td class="num">${pu?fmtPLN(h.cena/pu):"—"}</td><td>${h.zdarzenie||""}</td></tr>`;
+}).join("") : `<tr><td colspan="5" style="color:var(--muted)">Brak zmian cen od dnia rozpoczęcia sprzedaży (${fmtDate(STAN_NA)}).</td></tr>`;
+
+const pl = document.getElementById("prospektLink");
+pl.innerHTML = PROSPEKT_PDF
+  ? `<a href="${PROSPEKT_PDF}">Część ogólna prospektu informacyjnego – zadanie Lubiatowska 89 (PDF)</a>`
+  : (DRAFT ? todo("link do PDF części ogólnej prospektu") : "część ogólna prospektu informacyjnego dostępna w siedzibie dewelopera");
+
+const missing = [];
+LOKALE.forEach(l => { if(!l.cena) missing.push("cena lokalu " + l.nr); if(!l.pu) missing.push("powierzchnia lokalu " + l.nr); });
+if(!HISTORIA.length) missing.push("pierwszy wpis w historii cen (data rozpoczęcia sprzedaży)");
+if(!PROSPEKT_PDF) missing.push("plik PDF części ogólnej prospektu");
+const banner = document.getElementById("draftBanner");
+if (DRAFT) {
+  banner.hidden = false;
+  banner.innerHTML = `<b>Wersja robocza</b> – przed wgraniem na jagodowa.com uzupełnij w sekcji DANE na końcu pliku: ${missing.join(", ")}; następnie ustaw <code>DRAFT = false</code>.`;
+}
+</script>
+</body>
+</html>

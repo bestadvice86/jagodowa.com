@@ -64,7 +64,8 @@ header .wrap{display:flex;align-items:center;justify-content:space-between;gap:1
 .hero-btn:hover{background:#fff}
 .hero-btn.prev{left:max(12px,env(safe-area-inset-left,0px))}
 .hero-btn.next{right:max(12px,env(safe-area-inset-right,0px))}
-.hero-dots{position:absolute;top:12px;left:max(10px,env(safe-area-inset-left,0px));z-index:2;display:flex}
+.hero-dots{position:absolute;top:14px;left:max(10px,env(safe-area-inset-left,0px));z-index:2;display:flex}
+.hero-count{color:#1b2130;background:rgba(255,255,255,.9);font-size:12px;font-weight:600;padding:4px 9px;border-radius:4px;font-variant-numeric:tabular-nums}
 .hero-dots button{width:24px;height:24px;padding:0;border:0;background:none;cursor:pointer;display:flex;align-items:center;justify-content:center}
 .hero-dots button::before{content:"";width:9px;height:9px;border-radius:50%;border:1.5px solid #fff;box-sizing:border-box}
 .hero-dots button[aria-current="true"]::before{background:#fff}
@@ -141,13 +142,36 @@ html{scroll-behavior:smooth}
 <div class="hero" id="top">
   <div class="slides" id="heroSlides" aria-roledescription="karuzela" aria-label="Wizualizacje inwestycji">
     <img class="slide is-active" src="img/elewacja.jpg" alt="Wizualizacja budynku dwulokalowego przy ul. Lubiatowskiej 89: biała bryła z garażami i balkonami, podjazdy z kostki, sosny w tle" width="1600" height="900">
-    <img class="slide" src="img/salon.jpg" alt="Wizualizacja salonu z aneksem kuchennym i wyjściem na ogród" width="1200" height="675" loading="lazy">
-    <img class="slide" src="img/jadalnia.jpg" alt="Wizualizacja jadalni z drewnianymi panelami i oknem na ogród" width="1200" height="675" loading="lazy">
-    <img class="slide" src="img/sypialnia-2.jpg" alt="Wizualizacja sypialni z drewnianymi lamelami, łóżkiem i wyjściem na balkon" width="1000" height="563" loading="lazy">
-    <img class="slide" src="img/sypialnia.jpg" alt="Wizualizacja sypialni z garderobą i łazienką" width="1200" height="675" loading="lazy">
-    <img class="slide" src="img/pokoj-dziecka-1.jpg" alt="Wizualizacja pokoju dziecięcego z zabudową i okrągłym siedziskiem" width="1000" height="746" loading="lazy">
-    <img class="slide" src="img/pokoj-gabinet.jpg" alt="Wizualizacja pokoju z sofą, biurkiem i zabudową szafową" width="1000" height="746" loading="lazy">
-    <img class="slide" src="img/lazienka-2.jpg" alt="Wizualizacja łazienki z umywalką, podświetlanym lustrem i zieloną płytką" width="1000" height="563" loading="lazy">
+    <img class="slide" src="img/hol-2.jpg" alt="Wizualizacja holu wejściowego z ławką, konsolą i drzwiami wejściowymi" width="1600" height="900">
+    <img class="slide" data-src="img/hol-1.jpg" alt="Wizualizacja korytarza parteru z drewnianą zabudową i podświetleniem" width="1600" height="900">
+    <img class="slide" data-src="img/salon.jpg" alt="Wizualizacja salonu z aneksem kuchennym i wyjściem na ogród" width="1200" height="675">
+    <img class="slide" data-src="img/salon-kuchnia.jpg" alt="Wizualizacja otwartej strefy dziennej: salon, jadalnia i kuchnia z wyspą" width="1600" height="900">
+    <img class="slide" data-src="img/salon-tv.jpg" alt="Wizualizacja salonu ze ścianą TV i regałami" width="1600" height="900">
+    <img class="slide" data-src="img/jadalnia.jpg" alt="Wizualizacja jadalni z drewnianymi panelami i oknem na ogród" width="1200" height="675">
+    <img class="slide" data-src="img/kuchnia-1.jpg" alt="Wizualizacja kuchni z wyspą barową i hokerami" width="1600" height="900">
+    <img class="slide" data-src="img/kuchnia-2.jpg" alt="Wizualizacja kuchni: ciąg roboczy i wyspa, w tle salon" width="1600" height="900">
+    <img class="slide" data-src="img/lazienka-3.jpg" alt="Wizualizacja łazienki z pralką i ścianą w jodełkę" width="1600" height="900">
+    <img class="slide" data-src="img/lazienka-4.jpg" alt="Wizualizacja jasnej łazienki z grzejnikiem drabinkowym" width="1600" height="900">
+    <img class="slide" data-src="img/lazienka-5.jpg" alt="Wizualizacja łazienki w widoku z góry" width="1600" height="900">
+    <img class="slide" data-src="img/schody.jpg" alt="Wizualizacja schodów z drewnianymi stopniami i szklaną balustradą" width="1600" height="900">
+    <img class="slide" data-src="img/korytarz-2.jpg" alt="Wizualizacja piętra przy schodach z tapetą w trawy" width="1600" height="900">
+    <img class="slide" data-src="img/hol-pietro.jpg" alt="Wizualizacja holu na piętrze z komodą i lustrami" width="1600" height="900">
+    <img class="slide" data-src="img/korytarz-1.jpg" alt="Wizualizacja korytarza na piętrze z oknem" width="1600" height="900">
+    <img class="slide" data-src="img/sypialnia-2.jpg" alt="Wizualizacja sypialni z drewnianymi lamelami, łóżkiem i wyjściem na balkon" width="1000" height="563">
+    <img class="slide" data-src="img/sypialnia-3.jpg" alt="Wizualizacja sypialni: łóżko na tle drewnianego panelu" width="1600" height="900">
+    <img class="slide" data-src="img/sypialnia-4.jpg" alt="Wizualizacja sypialni ze ścianą TV i toaletką" width="1600" height="900">
+    <img class="slide" data-src="img/sypialnia.jpg" alt="Wizualizacja sypialni z garderobą i łazienką" width="1200" height="675">
+    <img class="slide" data-src="img/lazienka-6.jpg" alt="Wizualizacja łazienki z kabiną prysznicową i podświetlanym lustrem" width="1600" height="900">
+    <img class="slide" data-src="img/lazienka-7.jpg" alt="Wizualizacja łazienki: prysznic i umywalka z drewnianą szafką" width="1600" height="900">
+    <img class="slide" data-src="img/lazienka-8.jpg" alt="Wizualizacja łazienki z widokiem na drzwi do sypialni" width="1600" height="900">
+    <img class="slide" data-src="img/pokoj-dziecka-1.jpg" alt="Wizualizacja pokoju dziecięcego z zabudową i okrągłym siedziskiem" width="1000" height="746">
+    <img class="slide" data-src="img/pokoj-dziecka-2.jpg" alt="Wizualizacja pokoju dziecięcego z biurkiem i wyjściem na balkon" width="1000" height="746">
+    <img class="slide" data-src="img/pokoj-dziecka-3.jpg" alt="Wizualizacja pokoju dziecięcego z biurkiem i łóżkiem" width="1600" height="900">
+    <img class="slide" data-src="img/pokoj-gabinet.jpg" alt="Wizualizacja pokoju z sofą, biurkiem i zabudową szafową" width="1000" height="746">
+    <img class="slide" data-src="img/gabinet-2.jpg" alt="Wizualizacja gabinetu z biurkiem i galerią zdjęć" width="1600" height="900">
+    <img class="slide" data-src="img/lazienka-1.jpg" alt="Wizualizacja łazienki z wanną narożną i wnękami" width="1000" height="544">
+    <img class="slide" data-src="img/lazienka-9.jpg" alt="Wizualizacja łazienki z wanną narożną, wnękami i drzwiami" width="1600" height="900">
+    <img class="slide" data-src="img/lazienka-2.jpg" alt="Wizualizacja łazienki z umywalką, podświetlanym lustrem i zieloną płytką" width="1000" height="563">
   </div>
   <span class="tag">Wizualizacja</span>
   <div class="hero-dots" id="heroDots"></div>
@@ -176,14 +200,35 @@ html{scroll-behavior:smooth}
 <section id="galeria">
   <h2>Wizualizacje wnętrz</h2>
   <div class="gallery">
+    <figure><img src="img/hol-2.jpg" alt="Wizualizacja holu wejściowego z ławką, konsolą i drzwiami wejściowymi" width="1600" height="900" loading="lazy"><figcaption>Parter: hol wejściowy</figcaption></figure>
+    <figure><img src="img/hol-1.jpg" alt="Wizualizacja korytarza parteru z drewnianą zabudową i podświetleniem" width="1600" height="900" loading="lazy"><figcaption>Parter: korytarz</figcaption></figure>
     <figure><img src="img/salon.jpg" alt="Wizualizacja salonu z aneksem kuchennym i wyjściem na ogród" width="1200" height="675" loading="lazy"><figcaption>Parter: salon z aneksem kuchennym i tarasem</figcaption></figure>
+    <figure><img src="img/salon-kuchnia.jpg" alt="Wizualizacja otwartej strefy dziennej: salon, jadalnia i kuchnia z wyspą" width="1600" height="900" loading="lazy"><figcaption>Parter: strefa dzienna z kuchnią i wyspą</figcaption></figure>
+    <figure><img src="img/salon-tv.jpg" alt="Wizualizacja salonu ze ścianą TV i regałami" width="1600" height="900" loading="lazy"><figcaption>Parter: salon, ściana TV z regałami</figcaption></figure>
     <figure><img src="img/jadalnia.jpg" alt="Wizualizacja jadalni z drewnianymi panelami i oknem na ogród" width="1200" height="675" loading="lazy"><figcaption>Parter: strefa jadalna</figcaption></figure>
+    <figure><img src="img/kuchnia-1.jpg" alt="Wizualizacja kuchni z wyspą barową i hokerami" width="1600" height="900" loading="lazy"><figcaption>Parter: kuchnia z wyspą barową</figcaption></figure>
+    <figure><img src="img/kuchnia-2.jpg" alt="Wizualizacja kuchni: ciąg roboczy i wyspa, w tle salon" width="1600" height="900" loading="lazy"><figcaption>Parter: kuchnia, ciąg roboczy</figcaption></figure>
+    <figure><img src="img/lazienka-3.jpg" alt="Wizualizacja łazienki z pralką i ścianą w jodełkę" width="1600" height="900" loading="lazy"><figcaption>Łazienka z miejscem na pralkę</figcaption></figure>
+    <figure><img src="img/lazienka-4.jpg" alt="Wizualizacja jasnej łazienki z grzejnikiem drabinkowym" width="1600" height="900" loading="lazy"><figcaption>Łazienka, widok od drzwi</figcaption></figure>
+    <figure><img src="img/lazienka-5.jpg" alt="Wizualizacja łazienki w widoku z góry" width="1600" height="900" loading="lazy"><figcaption>Łazienka, widok z góry</figcaption></figure>
+    <figure><img src="img/schody.jpg" alt="Wizualizacja schodów z drewnianymi stopniami i szklaną balustradą" width="1600" height="900" loading="lazy"><figcaption>Schody na piętro</figcaption></figure>
+    <figure><img src="img/korytarz-2.jpg" alt="Wizualizacja piętra przy schodach z tapetą w trawy" width="1600" height="900" loading="lazy"><figcaption>Piętro: przestrzeń przy schodach</figcaption></figure>
+    <figure><img src="img/hol-pietro.jpg" alt="Wizualizacja holu na piętrze z komodą i lustrami" width="1600" height="900" loading="lazy"><figcaption>Piętro: hol z komodą</figcaption></figure>
+    <figure><img src="img/korytarz-1.jpg" alt="Wizualizacja korytarza na piętrze z oknem" width="1600" height="900" loading="lazy"><figcaption>Piętro: korytarz</figcaption></figure>
     <figure><img src="img/sypialnia-2.jpg" alt="Wizualizacja sypialni z drewnianymi lamelami, łóżkiem i wyjściem na balkon" width="1000" height="563" loading="lazy"><figcaption>Piętro: sypialnia główna</figcaption></figure>
+    <figure><img src="img/sypialnia-3.jpg" alt="Wizualizacja sypialni: łóżko na tle drewnianego panelu" width="1600" height="900" loading="lazy"><figcaption>Piętro: sypialnia główna, łóżko</figcaption></figure>
+    <figure><img src="img/sypialnia-4.jpg" alt="Wizualizacja sypialni ze ścianą TV i toaletką" width="1600" height="900" loading="lazy"><figcaption>Piętro: sypialnia główna, ściana TV i toaletka</figcaption></figure>
     <figure><img src="img/sypialnia.jpg" alt="Wizualizacja sypialni z garderobą i łazienką" width="1200" height="675" loading="lazy"><figcaption>Piętro: sypialnia z garderobą i łazienką</figcaption></figure>
+    <figure><img src="img/lazienka-6.jpg" alt="Wizualizacja łazienki z kabiną prysznicową i podświetlanym lustrem" width="1600" height="900" loading="lazy"><figcaption>Piętro: łazienka przy sypialni</figcaption></figure>
+    <figure><img src="img/lazienka-7.jpg" alt="Wizualizacja łazienki: prysznic i umywalka z drewnianą szafką" width="1600" height="900" loading="lazy"><figcaption>Piętro: łazienka przy sypialni, prysznic</figcaption></figure>
+    <figure><img src="img/lazienka-8.jpg" alt="Wizualizacja łazienki z widokiem na drzwi do sypialni" width="1600" height="900" loading="lazy"><figcaption>Piętro: łazienka, wyjście do sypialni</figcaption></figure>
     <figure><img src="img/pokoj-dziecka-1.jpg" alt="Wizualizacja pokoju dziecięcego z zabudową i okrągłym siedziskiem" width="1000" height="746" loading="lazy"><figcaption>Piętro: pokój dziecięcy</figcaption></figure>
     <figure><img src="img/pokoj-dziecka-2.jpg" alt="Wizualizacja pokoju dziecięcego z biurkiem i wyjściem na balkon" width="1000" height="746" loading="lazy"><figcaption>Piętro: pokój dziecięcy, widok na okno balkonowe</figcaption></figure>
+    <figure><img src="img/pokoj-dziecka-3.jpg" alt="Wizualizacja pokoju dziecięcego z biurkiem i łóżkiem" width="1600" height="900" loading="lazy"><figcaption>Piętro: pokój dziecięcy, biurko i łóżko</figcaption></figure>
     <figure><img src="img/pokoj-gabinet.jpg" alt="Wizualizacja pokoju z sofą, biurkiem i zabudową szafową" width="1000" height="746" loading="lazy"><figcaption>Piętro: pokój do pracy lub dla gości</figcaption></figure>
+    <figure><img src="img/gabinet-2.jpg" alt="Wizualizacja gabinetu z biurkiem i galerią zdjęć" width="1600" height="900" loading="lazy"><figcaption>Piętro: gabinet, strefa biurka</figcaption></figure>
     <figure><img src="img/lazienka-1.jpg" alt="Wizualizacja łazienki z wanną narożną i wnękami" width="1000" height="544" loading="lazy"><figcaption>Łazienka z wanną</figcaption></figure>
+    <figure><img src="img/lazienka-9.jpg" alt="Wizualizacja łazienki z wanną narożną, wnękami i drzwiami" width="1600" height="900" loading="lazy"><figcaption>Łazienka z wanną, widok na drzwi</figcaption></figure>
     <figure><img src="img/lazienka-2.jpg" alt="Wizualizacja łazienki z umywalką, podświetlanym lustrem i zieloną płytką" width="1000" height="563" loading="lazy"><figcaption>Łazienka: strefa umywalki</figcaption></figure>
   </div>
   <p class="gallery-note">Wizualizacje przedstawiają przykładową aranżację i nie stanowią elementu oferty. Lokale sprzedawane są w stanie deweloperskim opisanym poniżej.</p>
@@ -328,8 +373,11 @@ if (DRAFT) {
   const s=[...box.querySelectorAll(".slide")], dots=document.getElementById("heroDots");
   const reduce=matchMedia("(prefers-reduced-motion: reduce)").matches;
   let i=0, t=null;
-  s.forEach((_,k)=>{ const b=document.createElement("button"); b.type="button"; b.setAttribute("aria-label","Wizualizacja "+(k+1)+" z "+s.length); b.addEventListener("click",()=>{go(k);restart();}); dots.appendChild(b); });
-  function go(n){ s[i].classList.remove("is-active"); i=(n+s.length)%s.length; s[i].classList.add("is-active"); [...dots.children].forEach((d,k)=>d.setAttribute("aria-current",k===i?"true":"false")); }
+  const many=s.length>10; let cnt=null;
+  if(many){ cnt=document.createElement("span"); cnt.className="hero-count"; dots.appendChild(cnt); }
+  else s.forEach((_,k)=>{ const b=document.createElement("button"); b.type="button"; b.setAttribute("aria-label","Wizualizacja "+(k+1)+" z "+s.length); b.addEventListener("click",()=>{go(k);restart();}); dots.appendChild(b); });
+  function load(k){ const im=s[(k+s.length)%s.length]; if(im.dataset.src){ im.src=im.dataset.src; im.removeAttribute("data-src"); } }
+  function go(n){ s[i].classList.remove("is-active"); i=(n+s.length)%s.length; load(i); load(i+1); load(i-1); s[i].classList.add("is-active"); if(many) cnt.textContent=(i+1)+" / "+s.length; else [...dots.children].forEach((d,k)=>d.setAttribute("aria-current",k===i?"true":"false")); }
   function stop(){ clearInterval(t); t=null; }
   function restart(){ stop(); if(!reduce) t=setInterval(()=>go(i+1),5000); }
   document.querySelectorAll(".hero-btn").forEach(b=>b.addEventListener("click",()=>{go(i+Number(b.dataset.dir));restart();}));

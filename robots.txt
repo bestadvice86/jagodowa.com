@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://oferta.jagodowa.com/sitemap.xml

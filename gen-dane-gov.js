@@ -1,15 +1,20 @@
 // Generuje pliki dla dane.gov.pl (art. 19b ustawy deweloperskiej) na podstawie dane.js:
-//   ceny-ofertowe-jagodowa-invest.csv  – wzór Ministerstwa Cyfryzacji (60 kolumn, separator ;, UTF-8 BOM, brak danych = X)
-//   dane-gov-pl.xml                    – manifest harvestera (urn:otwarte-dane:harvester:1.13)
+//   ceny-ofertowe-jagodowa-invest.csv            – aktualny cennik wg wzoru MC (60 kolumn, separator ;, UTF-8 BOM, brak danych = X)
+//   csv/RRRR/ceny-ofertowe-jagodowa-invest-RRRR-MM-DD.csv – plik dzienny (tworzony raz na dzień, nigdy nie nadpisywany)
+//   dane-gov-pl.xml                              – manifest harvestera (urn:otwarte-dane:harvester:1.13), zasób na każdy dzień
+//   dane-gov-pl.md5 oraz dane-gov-pl.xml.md5     – suma MD5 pliku XML (32 znaki, małe litery, bez nowej linii)
 // Uruchamiany codziennie przez GitHub Actions (.github/workflows/dane-gov-pl.yml) oraz po każdej zmianie dane.js.
 const fs = require("fs");
+const path = require("path");
+const crypto = require("crypto");
 const vm = require("vm");
 
 const { STAN_NA, PROSPEKT_PDF, LOKALE, HISTORIA } = vm.runInNewContext(
   fs.readFileSync("dane.js", "utf8") + "\n;({ STAN_NA, PROSPEKT_PDF, LOKALE, HISTORIA });", {});
 
 const SITE = "https://oferta.jagodowa.com";
-const today = new Date().toISOString().slice(0, 10);
+// data wg czasu warszawskiego (GitHub Actions działa w UTC)
+const today = new Intl.DateTimeFormat("sv-SE", { timeZone: "Europe/Warsaw" }).format(new Date());
 const pln = n => n.toFixed(2).replace(".", ",");
 const stamp = d => `${d} 00:00:00`;
 
@@ -54,6 +59,19 @@ const esc = v => /[;"\r\n]/.test(v) ? `"${v.replace(/"/g, '""')}"` : v;
 const csv = "﻿" + [HDR, ...rows].map(r => r.map(esc).join(";")).join("\r\n") + "\r\n";
 fs.writeFileSync("ceny-ofertowe-jagodowa-invest.csv", csv);
 
+// plik dzienny: tworzony tylko, jeśli dla dzisiejszej daty jeszcze nie istnieje (archiwum się nie zmienia)
+const dailyName = d => `ceny-ofertowe-jagodowa-invest-${d}.csv`;
+const dailyPath = path.join("csv", today.slice(0, 4), dailyName(today));
+if (!fs.existsSync(dailyPath)) { fs.mkdirSync(path.dirname(dailyPath), { recursive: true }); fs.writeFileSync(dailyPath, csv); }
+
+// wszystkie dotychczasowe pliki dzienne – portal usuwa zasoby, których nie ma w XML
+const days = [];
+for (const y of fs.existsSync("csv") ? fs.readdirSync("csv").sort() : [])
+  for (const f of fs.readdirSync(path.join("csv", y)).sort()) {
+    const m = f.match(/^ceny-ofertowe-jagodowa-invest-(\d{4}-\d{2}-\d{2})\.csv$/);
+    if (m) days.push(m[1]);
+  }
+
 const x = s => s.replace(/&/g, "&amp;").replace(/</g, "&lt;");
 const xml = `<?xml version="1.0" encoding="UTF-8"?>
 <ns2:datasets xmlns:ns2="urn:otwarte-dane:harvester:1.13" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
@@ -67,33 +85,38 @@ const xml = `<?xml version="1.0" encoding="UTF-8"?>
       <polish>Zbiór danych zawiera informacje o cenach ofertowych lokali mieszkalnych dewelopera JAGODOWA INVEST SPÓŁKA Z OGRANICZONĄ ODPOWIEDZIALNOŚCIĄ (przedsięwzięcie deweloperskie „Jagodowa Polana”, ul. Lubiatowska 89, Koszalin), udostępniane zgodnie z art. 19b ust. 1 ustawy z dnia 20 maja 2021 r. o ochronie praw nabywcy lokalu mieszkalnego lub domu jednorodzinnego oraz Deweloperskim Funduszu Gwarancyjnym.</polish>
       <english>The dataset contains information on offer prices of residential units of the developer JAGODOWA INVEST SPÓŁKA Z OGRANICZONĄ ODPOWIEDZIALNOŚCIĄ (development project "Jagodowa Polana", Lubiatowska 89, Koszalin), made available in accordance with art. 19b(1) of the Act of 20 May 2021 on the protection of the rights of the buyer of a residential unit or a single-family house and the Developer Guarantee Fund.</english>
     </description>
+    <url>${SITE}/</url>
     <updateFrequency>daily</updateFrequency>
     <hasDynamicData>false</hasDynamicData>
     <hasHighValueData>true</hasHighValueData>
     <hasHighValueDataFromEuropeanCommissionList>false</hasHighValueDataFromEuropeanCommissionList>
     <hasResearchData>false</hasResearchData>
-    <categories><category>ECON</category></categories>
+    <categories>
+      <category>ECON</category>
+    </categories>
     <resources>
-      <resource status="published">
-        <extIdent>JAGODOWA_INVEST_CENY_000000000000001</extIdent>
-        <url>${SITE}/ceny-ofertowe-jagodowa-invest.csv</url>
+${days.map(d => `      <resource status="published">
+        <extIdent>JAGODOWA_INVEST_CENY_${d.replace(/-/g, "")}</extIdent>
+        <url>${SITE}/csv/${d.slice(0, 4)}/${dailyName(d)}</url>
         <title>
-          <polish>Ceny ofertowe mieszkań dewelopera JAGODOWA INVEST SPÓŁKA Z OGRANICZONĄ ODPOWIEDZIALNOŚCIĄ</polish>
-          <english>Offer prices for developer's apartments JAGODOWA INVEST SPÓŁKA Z OGRANICZONĄ ODPOWIEDZIALNOŚCIĄ</english>
+          <polish>Ceny ofertowe mieszkań dewelopera JAGODOWA INVEST SPÓŁKA Z OGRANICZONĄ ODPOWIEDZIALNOŚCIĄ ${d}</polish>
+          <english>Offer prices of apartments of developer JAGODOWA INVEST SPÓŁKA Z OGRANICZONĄ ODPOWIEDZIALNOŚCIĄ ${d}</english>
         </title>
         <description>
-          <polish>Dane dotyczące cen ofertowych lokali mieszkalnych dewelopera JAGODOWA INVEST SPÓŁKA Z OGRANICZONĄ ODPOWIEDZIALNOŚCIĄ według stanu na ${x(today)}, udostępnione zgodnie z art. 19b ust. 1 ustawy z dnia 20 maja 2021 r. o ochronie praw nabywcy lokalu mieszkalnego lub domu jednorodzinnego oraz Deweloperskim Funduszu Gwarancyjnym. Plik w formacie CSV (separator ;, UTF-8), zgodny ze wzorem Ministerstwa Cyfryzacji.</polish>
-          <english>Data on offer prices of residential units of the developer JAGODOWA INVEST SPÓŁKA Z OGRANICZONĄ ODPOWIEDZIALNOŚCIĄ as of ${x(today)}, made available in accordance with art. 19b(1) of the Act of 20 May 2021 on the protection of the rights of the buyer of a residential unit or a single-family house and the Developer Guarantee Fund.</english>
+          <polish>Dane dotyczące cen ofertowych lokali mieszkalnych dewelopera JAGODOWA INVEST SPÓŁKA Z OGRANICZONĄ ODPOWIEDZIALNOŚCIĄ udostępnione ${d} zgodnie z art. 19b ust. 1 ustawy z dnia 20 maja 2021 r. o ochronie praw nabywcy lokalu mieszkalnego lub domu jednorodzinnego oraz Deweloperskim Funduszu Gwarancyjnym.</polish>
+          <english>Data on offer prices of residential units of the developer JAGODOWA INVEST SPÓŁKA Z OGRANICZONĄ ODPOWIEDZIALNOŚCIĄ made available ${d} in accordance with art. 19b(1) of the Act of 20 May 2021 on the protection of the rights of the buyer of a residential unit or a single-family house and the Developer Guarantee Fund.</english>
         </description>
         <availability>local</availability>
-        <dataDate>${today}</dataDate>
-        <specialSigns><specialSign>X</specialSign></specialSigns>
+        <dataDate>${d}</dataDate>
+        <specialSigns>
+          <specialSign>X</specialSign>
+        </specialSigns>
         <hasDynamicData>false</hasDynamicData>
         <hasHighValueData>true</hasHighValueData>
         <hasHighValueDataFromEuropeanCommissionList>false</hasHighValueDataFromEuropeanCommissionList>
         <hasResearchData>false</hasResearchData>
         <containsProtectedData>false</containsProtectedData>
-      </resource>
+      </resource>`).join("\n")}
     </resources>
     <tags>
       <tag lang="pl">deweloper</tag>
@@ -104,4 +127,7 @@ const xml = `<?xml version="1.0" encoding="UTF-8"?>
 </ns2:datasets>
 `;
 fs.writeFileSync("dane-gov-pl.xml", xml);
-console.log(`OK: ${rows.length} lokale, dataDate ${today}`);
+const md5 = crypto.createHash("md5").update(Buffer.from(xml, "utf8")).digest("hex");
+fs.writeFileSync("dane-gov-pl.md5", md5);
+fs.writeFileSync("dane-gov-pl.xml.md5", md5);
+console.log(`OK: ${rows.length} lokale, dzień ${today}, zasobów w XML: ${days.length}, md5 ${md5}`);

@@ -2,7 +2,7 @@ name: dane.gov.pl - codzienna aktualizacja cen (art. 19b)
 
 on:
   schedule:
-    - cron: "17 4 * * *"
+    - cron: "7 23 * * *"      # codziennie 23:07 UTC = 00:07 (zima) / 01:07 (lato) czasu polskiego
   push:
     branches: [main]
     paths: ["dane.js", "gen-dane-gov.js"]
@@ -25,6 +25,6 @@ jobs:
         run: |
           git config user.name "jagodowa-bot"
           git config user.email "biuro@jagodowa.com"
-          git add ceny-ofertowe-jagodowa-invest.csv dane-gov-pl.xml
+          git add ceny-ofertowe-jagodowa-invest.csv dane-gov-pl.xml dane-gov-pl.md5 dane-gov-pl.xml.md5 csv
           git diff --cached --quiet || git commit -m "dane.gov.pl: aktualizacja $(date -u +%Y-%m-%d)"
           git push
